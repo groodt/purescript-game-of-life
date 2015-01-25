@@ -1,0 +1,22 @@
+{
+  "name": "purescript-game-of-life",
+  "version": "0.0.0",
+  "authors": [
+    "Greg Roodt <groodt@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "purescript-math": "0.1.0",
+    "purescript-free-canvas": "0.1.1",
+    "purescript-arrays": "~0.3.0",
+    "purescript-lists": "~0.5.0",
+    "purescript-requestanimationframe": "~0.0.1"
+  }
+}

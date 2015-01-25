@@ -1,0 +1,7 @@
+dist
+bower_components
+node_modules
+.psci
+.psci_modules
+.cabal-sandbox/
+cabal.sandbox.config
