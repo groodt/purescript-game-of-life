@@ -13,6 +13,8 @@ import Control.RAF
 import Graphics.Canvas (getCanvasElementById, getContext2D)
 import Graphics.Canvas.Free
 
+import Data.Date
+
 -- Pure code 
 -------------
 
@@ -25,12 +27,18 @@ cellWidthPx = 10
 gridWidthPx :: Number
 gridWidthPx = gridWidth * cellWidthPx
 
+tickMs :: Number
+tickMs = 60
+
 type Pos = Tuple Number Number
 
 type Board = [Pos]
 
 glider :: Board
 glider = [Tuple 4 2, Tuple 2 3, Tuple 4 3, Tuple 3 4, Tuple 4 4]
+
+rPentomino :: Board
+rPentomino = [Tuple 3 2, Tuple 4 2, Tuple 2 3, Tuple 3 3, Tuple 3 4]
 
 isAlive :: Board -> Pos -> Boolean
 isAlive b p = elem p b
@@ -122,11 +130,16 @@ drawScene board context = do
     clearCanvas
     seqn $ drawCalls board
 
-tick :: forall eff. Board -> Graphics.Canvas.Context2D -> Eff (raf :: RAF , canvas :: Graphics.Canvas.Canvas, trace :: Trace |eff) Unit
-tick board context = do
+tick :: forall eff. Board -> Graphics.Canvas.Context2D -> Number -> Eff (raf :: RAF , canvas :: Graphics.Canvas.Canvas, trace :: Trace , now :: Now |eff) Unit
+tick board context t = do
   drawScene board context
-  let board' = nextgen board
-  requestAnimationFrame (tick board' context)
+
+  currentTime <- liftM1 toEpochMilliseconds now
+  let elapsed = currentTime - t
+  let board' = if elapsed > tickMs then (nextgen board) else board
+  let t' = if elapsed > tickMs then currentTime else t
+
+  requestAnimationFrame (tick board' context t')
 
 -- Start of computation
 -----------------------
@@ -134,4 +147,4 @@ main = do
   canvas <- getCanvasElementById "canvas"
   context <- getContext2D canvas
 
-  tick glider context
+  tick glider context 0

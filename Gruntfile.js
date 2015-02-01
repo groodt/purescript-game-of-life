@@ -14,6 +14,20 @@ module.exports = function(grunt) {
       all: {
         src: ["<%=srcFiles%>"],
         dest: "dist/Main.js"
+      },
+      tests: {
+        options: {
+          module: ["Main"],
+          main: true
+        },
+        src: ["tests/Main.purs", "<%=srcFiles%>"],
+        dest: "dist/tests.js"
+      }
+    },
+
+    execute: {
+      tests: {
+        src: "dist/tests.js"
       }
     },
 
@@ -21,6 +35,10 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks("grunt-purescript");
+  grunt.loadNpmTasks("grunt-execute");
+
+  grunt.registerTask("build", ["psc:all", "dotPsci"]);
+  grunt.registerTask("test", ["build", "psc:tests", "execute:tests"]);
   
   grunt.registerTask("default", ["psc:all", "dotPsci"]);
 };
