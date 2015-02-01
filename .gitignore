@@ -5,3 +5,4 @@ node_modules
 .psci_modules
 .cabal-sandbox/
 cabal.sandbox.config
+.DS_Store
