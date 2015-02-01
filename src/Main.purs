@@ -20,6 +20,9 @@ import Data.Date
 -- Rendering code
 -----------------
 
+tickMs :: Number
+tickMs = 200
+
 type PosPx = Tuple Number Number
 
 backgroundColourHex :: String

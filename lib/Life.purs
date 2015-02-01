@@ -7,11 +7,6 @@ import Data.Array
 import Data.Foldable
 
 import Control.MonadPlus
-import Control.Monad.Eff
-import Control.RAF
-
-import Graphics.Canvas (getCanvasElementById, getContext2D)
-import Graphics.Canvas.Free
 
 import Data.Date
 
@@ -26,9 +21,6 @@ cellWidthPx = 10
 
 gridWidthPx :: Number
 gridWidthPx = gridWidth * cellWidthPx
-
-tickMs :: Number
-tickMs = 1000
 
 type Pos = Tuple Number Number
 

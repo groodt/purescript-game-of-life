@@ -1,7 +1,7 @@
-module Main where
+module TestMain where
 
 import Test.QuickCheck
 import Test.QuickCheck.Gen
 
 main = do
-  True
+  quickCheck $ \n -> n + 1 == 1 + n

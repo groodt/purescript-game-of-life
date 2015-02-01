@@ -17,10 +17,10 @@
     "purescript-free-canvas": "0.1.1",
     "purescript-arrays": "~0.3.0",
     "purescript-lists": "~0.5.0",
-    "purescript-requestanimationframe": "~0.0.1",
     "purescript-datetime": "~0.2.0"
   },
   "devDependencies": {
     "purescript-quickcheck": "~0.4.0"
-  }
+  },
+  "purescript-requestanimationframe": "~0.0.1"
 }
