@@ -5,23 +5,15 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
 
-    srcFiles: ["lib/**/*.purs", "bower_components/**/src/**/*.purs"],
-    mainFiles: ["src/**/*.purs", "<%=srcFiles%>"],
+    srcFiles: ["src/**/*.purs", "bower_components/**/src/**/*.purs"],
 
     psc: {
-      lib: {
-        options: {
-          module: ["Life"],
-        },
-        src: ["<%=srcFiles%>"],
-        dest: "dist/Lib.js"
-      },
       all: {
         options: {
           module: ["Main"],
           main: true
         },
-        src: ["<%=mainFiles%>"],
+        src: ["<%=srcFiles%>"],
         dest: "dist/Main.js"
       },
       tests: {
@@ -46,7 +38,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-purescript");
   grunt.loadNpmTasks("grunt-execute");
 
-  grunt.registerTask("build", ["psc:lib", "dotPsci"]);
+  grunt.registerTask("build", ["psc:all", "dotPsci"]);
   grunt.registerTask("test", ["build", "psc:tests", "execute:tests"]);
   
   grunt.registerTask("default", ["psc:all", "dotPsci"]);
