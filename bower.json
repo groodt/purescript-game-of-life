@@ -14,13 +14,13 @@
   ],
   "dependencies": {
     "purescript-math": "0.1.0",
-    "purescript-free-canvas": "0.1.1",
+    "purescript-free-canvas": "~0.2.0",
     "purescript-arrays": "~0.3.0",
-    "purescript-lists": "~0.5.0",
-    "purescript-datetime": "~0.2.0",
-    "purescript-requestanimationframe": "groodt/purescript-requestAnimationFrame#master"
+    "purescript-lists": "~0.6.0",
+    "purescript-datetime": "~0.3.0",
+    "purescript-requestanimationframe": "groodt/purescript-requestAnimationFrame#fix_invocation_target_exception"
   },
   "devDependencies": {
-    "purescript-quickcheck": "~0.4.0"
+    "purescript-quickcheck": "~0.5.0"
   }
 }
